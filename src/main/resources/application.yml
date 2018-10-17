@@ -1,0 +1,21 @@
+# It required to use actuator restricted endpoint like refresh else add spring-boot-starter-security dependency in pom 
+# and set below properties in yml
+#management.security.enabled=true
+#security.user.name=act
+#security.user.password=act
+#management.security.roles=ACTRADMIN
+#management.context-path=/manage
+
+management:
+  security:
+    enabled: false
+    
+# below properties will override the bootstarp yml properties
+#server:
+#  port: 8705
+
+# It will not work , you need to put in bootstrap yml
+#spring:
+#  cloud:
+#    config:
+#      uri: http://localhost:8701
