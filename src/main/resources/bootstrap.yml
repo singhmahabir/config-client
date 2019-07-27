@@ -10,7 +10,7 @@ spring:
       username: user
       password: user
       
-#    If you are fetching configuration through eureka the make below propertie comment.
+#    If you are fetching configuration through eureka then make below propertie comment.
 #      uri: http://localhost:8701
 
       discovery:
@@ -23,6 +23,9 @@ server:
 #  The below eureka related configuration is mandatory to use in bootstarp.yml and not in application.yml
 eureka: 
   client:
+#    enabled: true # default true
+#    registerWithEureka: true #you do not want your instances to be discovered whereas you just want do discover
+#     other instances. default true
     serviceUrl:
       defaultZone: http://localhost:8760/eureka/
   instance:

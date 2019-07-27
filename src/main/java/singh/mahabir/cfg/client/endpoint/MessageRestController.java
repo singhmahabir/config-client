@@ -1,17 +1,18 @@
-/**
- * Copyright 2017 Mercedes Benz Research & Development, A Daimler Company. All rights reserved.
- */
 
-package singh.mahabir.config.client.endpoint;
+package singh.mahabir.cfg.client.endpoint;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author Mahabir Singh
  *
+ */
+/*
+ * @RefreshScope is used to update the bean attribute at runtime if properties
+ * changed in config file
  */
 @RefreshScope
 @RestController
@@ -21,7 +22,7 @@ public class MessageRestController {
     // ****************************************************************************************************************
 
     @Value("${message:Unknown}")
-    private String msg;
+    private String userName;
 
     // ****************************************************************************************************************
     // ****************************************** Non Public Fields ***************************************************
@@ -31,9 +32,9 @@ public class MessageRestController {
     // ******************************************** Public Methods ****************************************************
     // ****************************************************************************************************************
 
-    @RequestMapping("/useme")
+	@GetMapping("/config")
     public String getMessage() {
-        return this.msg + " You r Welcome!!!";
+		return userName + " You r Welcome!!!";
 
     }
 

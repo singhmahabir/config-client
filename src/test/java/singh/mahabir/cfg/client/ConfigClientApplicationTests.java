@@ -1,4 +1,4 @@
-package singh.mahabir.config.client;
+package singh.mahabir.cfg.client;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
