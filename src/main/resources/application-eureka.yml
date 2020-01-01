@@ -1,0 +1,16 @@
+spring:
+  profiles: eureka
+  
+# If you are using registry server and want config-client access configuration via registry server then use.
+eureka:
+  client:
+    registerWithEureka: true #you do not want your instances to be discovered whereas you just want do discover other instances.
+    fetchRegistry: true # Indicates whether this client should fetch eureka registry information from eureka server.
+    serviceUrl: #Map of availability zone to list of fully qualified URLs to communicate with eureka server
+      defaultZone : http://${eureka.instance.hostname}:8760/eureka/
+    
+
+# for "eureka.instance" related properties you can go through
+# https://github.com/spring-cloud/spring-cloud-netflix/blob/master/spring-cloud-netflix-eureka-client/src/main/java/org/springframework/cloud/netflix/eureka/EurekaInstanceConfigBean.java
+  instance:
+    hostname: localhost

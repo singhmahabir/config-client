@@ -1,0 +1,8 @@
+spring:
+  profiles: logging
+
+logging:
+  level:
+    .: error
+    org.springframework: ERROR
+    singh.mahabir.bis: ERROR

@@ -1,0 +1,17 @@
+== config-client
+spring boot config client which consumes profiles based config files from config server direct or through eureka server
+
+urls
+https://cloud.spring.io/spring-cloud-config/multi/multi__spring_cloud_config_client.html.
+
+== Priority 
+=== 1st given to config server with {profile}
+	- profile name like config-client-{profile}.yml
+	- if same profile not found then config-client.yml at server
+	- if config-client.yml not found then application-{profile}.yml
+	- if application-{profile}.yml not then application.yml
+
+	
+==== 2nd given to local server with {profile}
+	- application-{profile}.yml
+	- if application-{profile}.yml not then application.yml.

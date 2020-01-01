@@ -15,7 +15,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.1.6.RELEASE</version>
+		<version>2.2.2.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 
@@ -24,7 +24,7 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<!-- <spring-boot-admin.version>2.1.6</spring-boot-admin.version> -->
 		<java.version>1.8</java.version>
-		<spring-cloud.version>Greenwich.SR2</spring-cloud.version>
+		<spring-cloud.version>Hoxton.SR1</spring-cloud.version>
 	</properties>
 
 	<dependencies>
@@ -40,19 +40,37 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
+		<!-- Either use this dependency or use @XmlRootElement over your POJO to 
+			generate the xml -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.dataformat</groupId>
+			<artifactId>jackson-dataformat-xml</artifactId>
+		</dependency>
+
 		<!-- when you want to make your application as client of registry Service -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 		</dependency>
-		
+
 		<!-- required to run refresh end-point if configuration files get changed 
 			and without restarting you can use the changed values -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
-		
+
+		<!-- log tracer -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-sleuth</artifactId>
+		</dependency>
+
+
+		<!-- <dependency> <groupId>org.asciidoctor</groupId> <artifactId>asciidoctorj</artifactId> 
+			<version>2.1.0</version> </dependency> <dependency> <groupId>org.asciidoctor</groupId> 
+			<artifactId>asciidoctorj-pdf</artifactId> <version>1.5.0-alpha.18</version> 
+			</dependency> -->
 		<!-- required for testing -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -71,14 +89,10 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
-	<!--This is required when you need to add spring-boot-admin related configuration -->
-            <!-- <dependency>
-                <groupId>de.codecentric</groupId>
-                <artifactId>spring-boot-admin-dependencies</artifactId>
-                <version>${spring-boot-admin.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-                </dependency> -->
+			<!--This is required when you need to add spring-boot-admin related configuration -->
+			<!-- <dependency> <groupId>de.codecentric</groupId> <artifactId>spring-boot-admin-dependencies</artifactId> 
+				<version>${spring-boot-admin.version}</version> <type>pom</type> <scope>import</scope> 
+				</dependency> -->
 		</dependencies>
 	</dependencyManagement>
 	<!--It automatically tries to rewrite archives to make them executable -->
@@ -88,6 +102,15 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<!-- <plugin> <groupId>org.asciidoctor</groupId> <artifactId>asciidoctor-maven-plugin</artifactId> 
+				<version>1.5.5</version> <dependencies> <dependency> <groupId>org.asciidoctor</groupId> 
+				<artifactId>asciidoctorj-pdf</artifactId> <version>1.5.0-alpha.18</version> 
+				</dependency> </dependencies> <executions> <execution> <id>output-html</id> 
+				<phase>generate-resources</phase> <goals> <goal>process-asciidoc</goal> </goals> 
+				</execution> </executions> <configuration> <sourceDirectory>src/main/doc</sourceDirectory> 
+				<outputDirectory>target/docs</outputDirectory> <backend>pdf</backend> </configuration> 
+				</plugin> -->
+
 		</plugins>
 	</build>
 </project>

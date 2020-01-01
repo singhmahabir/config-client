@@ -1,0 +1,39 @@
+spring:
+  application:
+#    name: 'config-client'# config-client will work as well
+    name: s1rates
+    
+# If below properties will not exist then default it will look config server on localhost:8888
+# config and eureka properties should be in bootstrap.yml else this will not work    
+  cloud:
+    config:
+#      fail-fast: true
+#  username, password required when we use secure config server  
+      username: user
+      password: user
+#    If you are fetching configuration through eureka then make below propertie comment.
+#      uri: http://localhost:8701
+      discovery:
+        enabled: true
+        service-id: 'configserver'# name of the config server name
+#        serviceID: 'configserver' # This will also work
+server:
+  port: 8702
+  
+#  The below eureka related configuration is mandatory to use in bootstarp.yml and not in application.yml
+eureka: 
+  client:
+    
+#    enabled: true # default true
+#    registerWithEureka: true #you do not want your instances to be discovered whereas you just want do discover
+#     other instances. default true
+    serviceUrl:
+      defaultZone: http://localhost:8760/eureka/
+  instance:
+        preferIpAddress: true
+#      metadata-map is required when your application is secure and you need to provide the 
+# that credencials to eureka server  
+#  metadata-map:
+#      user: user
+#      password: user
+#      configPath: /config 
